@@ -1,0 +1,4 @@
+FROM openjdk:8 
+EXPOSE 7077 
+ADD target/snmpapi.jar snmpapi.jar
+ENTRYPOINT ["java","-jar","snmpapi.jar"]
