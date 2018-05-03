@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SnmpApiController {
 
-	private static Logger logger  = Logger.getLogger(SnmpApiController.class);
 	
 
 		@RequestMapping(value="/{ipaddressinfo:.*}",method=RequestMethod.GET)
 		public void fetchingsnmpSystemInfo(HttpServletResponse response,@PathVariable("ipaddressinfo") String ipaddressinfo) throws IOException {
 		
+			
 			 PrintWriter out = response.getWriter();
 				SNMPManager client = new SNMPManager(ipaddressinfo+"/161");
 			client.start();
@@ -43,6 +43,7 @@ public class SnmpApiController {
 			        output = output.replaceAll("\"", "");
 			        out.print(output);
 			        out.close();
+			        
 			} 
 			
 			
